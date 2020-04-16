@@ -3,7 +3,7 @@ from dialogue_system import bml
 from .tcp_sender import TCPSender
 
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger().getChild(__name__)
 
 
 class UnityBody:
@@ -22,20 +22,20 @@ class UnityBody:
     def execute(self, bml_list):
         logger.debug('Executing BML commands:\n%s', bml_list)
         xml = bml.to_xml_clean(bml_list)
-        print(xml)
-        return self._conn.send_msg(xml) # tcp only, does not include sending files
+        logger.debug('Turning into XML:\n%s', xml)
+        return self._conn.send_msg(xml)
 
     def check_done(self, id):
+        logger.debug('MSG ID: %s', id)
         done = False
         while done == False:
             try:
-                if self._stomp.check_msg_done(id):
+                if self._conn.check_msg_done(id):
                     done = True
-            except Exception:
-                done = True
             except:
-                pass
+                done = True
 
     def execute_and_check(self, bml_list):
-        #return self.check_done(self.execute(bml_list))
-        return self.execute(bml_list)
+        logger.debug('Execute and Check in UnityBody')
+        return self.check_done(self.execute(bml_list))
+        #return self.execute(bml_list)

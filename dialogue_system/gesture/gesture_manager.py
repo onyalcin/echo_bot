@@ -36,7 +36,7 @@ class GestureManager:
     def get_emotion_gesture(self, emotion):
         return random.choice(self.emotion_categories[emotion]["gestures"])
 
-    def get_gesture_from_db(self, db,  category, name):
+    def get_gesture_from_db(self, db, category, name):
         return copy.deepcopy(db[category][name])
 
     def return_behavior(self, gesture_list, timing=None, amount=1.0):
@@ -46,7 +46,7 @@ class GestureManager:
                 category, name = gesture.split("_")
                 gesture_dict = self.get_gesture_from_db(self.gesture_db, category, name)
                 if timing is not None:  # TODO better timing depending on PAD?
-                    gesture_dict.update({'stroke': timing})
+                    gesture_dict.update({'start': timing}) # FIXME: Changed from stroke to start for Unity
                 if 'amount' in gesture_dict:
                     gesture_dict['amount'] = str(float(gesture_dict['amount'])*amount)
                 behavior_list.append(getattr(sys.modules[__name__], category)(**gesture_dict))
@@ -77,7 +77,7 @@ class GestureManager:
         return None
 
     def words_to_bml(self, word_list, speech_id):
-        text = [Mark('T0'), '. ']
+        text = [] # TODO: Unity version [Mark('T0'), '. ']
         for i in range(len(word_list)):
             text.append(Mark('T'+str(i+1)))
             text.append(word_list[i])
