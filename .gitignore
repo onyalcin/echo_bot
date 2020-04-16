@@ -1,0 +1,11 @@
+*.py[co]
+*.pyc
+__pycache__
+*.zip
+
+# Environment-specific
+.cache
+.idea
+
+#datasets and models
+key.json

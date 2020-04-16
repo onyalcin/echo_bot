@@ -14,6 +14,7 @@ from .input.video_thread import VideoInput
 from .emotion_recognition.video_recognition import Emo_VideoRecognizer
 
 from .smart_body.smart_body import SmartBody
+from .smart_body.unity_body import UnityBody
 from .agent.agent_queue import Agent
 from .gesture import gs_utils
 from .gesture.gesture_manager import GestureManager
@@ -46,10 +47,11 @@ if __name__ == '__main__':
 
         gesture_db, gesture_categories, emotion_categories, au_categories = gs_utils.load_gesture_dbs(cfg.agent['body'])
         gesture_manager = GestureManager(gesture_db, gesture_categories, emotion_categories, au_categories)
+		 
 
         with \
                 Microphone(executor) as microphone, \
-                SmartBody() as character, \
+                SmartBody() if cfg.agent['body'] == 'smartbody' else UnityBody() as character, \
                 Agent(character, gesture_manager) as agent, \
                 Controller(
                     agent=agent,

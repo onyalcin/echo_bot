@@ -1,0 +1,74 @@
+{
+  "sadness": {
+    "keywords": [],
+    "gestures": [
+      [
+        "Face_sad"
+      ]
+    ]
+  },
+  "sad": {
+    "keywords": [],
+    "gestures": [
+      [
+        "Face_sad"
+      ]
+    ]
+  },
+  "joy": {
+    "keywords": [],
+    "gestures": [
+      [
+        "Face_happy"
+      ]
+    ]
+  },
+  "anger": {
+    "keywords": [],
+    "gestures": [
+      [
+        "Face_anger"
+      ]
+    ]
+  },
+  "surprise": {
+    "keywords": [],
+    "gestures": [
+      [
+        "Face_surprise"
+      ]
+    ]
+  },
+  "fear": {
+    "keywords": [],
+    "gestures": [
+      [
+        "Face_fear"
+      ]
+    ]
+  },
+  "contempt": {
+    "keywords": [],
+    "gestures": [
+      [
+        "Face_contempt"
+      ]
+    ]
+  },
+  "disgust": {
+    "keywords": [],
+    "gestures": [
+      [
+        "Face_disgust"
+      ]
+    ]
+  },
+  "neutral": {
+    "keywords": [],
+    "gestures": [
+      [
+        "Face_neutral"
+      ]
+    ]
+  }
+}

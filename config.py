@@ -1,7 +1,7 @@
 agent = {
   'name': 'Matt',
   'db': 'matt2',
-  'body': 'smartbody',
+  'body': 'unity',
   'goals': ['1'],
   'mood': ('joy', 0.8),
   'expressiveness': 0.3
